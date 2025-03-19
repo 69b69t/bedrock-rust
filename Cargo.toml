@@ -1,0 +1,11 @@
+[package]
+name = "bedrockgen"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+java-rand = "0.2.0"
+criterion = "0.5"
+
+[dev-dependencies]
+criterion = "0.5"
