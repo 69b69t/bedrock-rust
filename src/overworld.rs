@@ -5,8 +5,8 @@ pub struct OverworldBedrock {
     xr: Xrng,
 }
 
-impl OverworldBedrock {
-    pub fn new(seed: u64) -> Self {
+impl crate::BedrockGenerator for OverworldBedrock {
+    fn new(seed: u64) -> Self {
         //initialize a world + random generator
         //rng calculation
         let mut xr = Xrng::new();
@@ -19,7 +19,7 @@ impl OverworldBedrock {
         Self { xr }
     }
 
-    pub fn is_bedrock(&self, x: i32, y: i32, z: i32) -> bool {
+    fn is_bedrock(&self, x: i32, y: i32, z: i32) -> bool {
         //density calculation
         let density = crate::lerp_from_progress(y as f32, -64.0, -59.0, 1.0, 0.0);
 

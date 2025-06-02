@@ -6,8 +6,8 @@ pub struct NetherBedrock {
 }
 
 //implement floor here to make it a little more seperate
-impl NetherBedrock {
-    pub fn new(seed: u64) -> Self {
+impl crate::BedrockGenerator for NetherBedrock {
+    fn new(seed: u64) -> Self {
         //generate a state for the bedrock floor
         let mut state = Random::new(seed);
         state.state.0 = (state.next_u64() & ((1 << 48) - 1)) as i64;
@@ -17,7 +17,7 @@ impl NetherBedrock {
         Self { state }
     }
 
-    pub fn is_bedrock(&self, x: i32, y: i32, z: i32) -> bool {
+    fn is_bedrock(&self, x: i32, y: i32, z: i32) -> bool {
         let density = crate::lerp_from_progress(y as f32, 127.0, 127.0 - 5.0, 1.0, 0.0);
 
         //make copy of state so we dont mess it up

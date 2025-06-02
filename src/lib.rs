@@ -1,6 +1,12 @@
 pub mod nether;
 pub mod overworld;
 
+pub trait BedrockGenerator {
+    fn new(seed: u64) -> Self;
+
+    fn is_bedrock(&self, x: i32, y: i32, z: i32) -> bool;
+}
+
 fn lerp(delta: f32, start: f32, end: f32) -> f32 {
     start + delta * (end - start)
 }

@@ -1,11 +1,12 @@
-use bedrockgen::overworld::OverworldBedrock;
+use bedrockgen::BedrockGenerator;
+use bedrockgen::nether::floor::NetherBedrock;
 
 fn main() {
-    let bedrock_generator = OverworldBedrock::new(0);
+    let bedrock_generator = NetherBedrock::new(0);
 
     for z in 0..16 {
         for x in 0..16 {
-            match bedrock_generator.is_bedrock(x, -60, z) {
+            match bedrock_generator.is_bedrock(x, 4, z) {
                 true => print!("# "),
                 false => print!("_ "),
             }
