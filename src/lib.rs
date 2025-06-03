@@ -11,10 +11,12 @@ pub trait BedrockGenerator {
     /// Returns a `Vec<bool>` of bedrock.
     /// It should be noted that the returned Vec contains no metadata,
     /// nor does it have indicies to help you use the return value.
-    /// It is stored as a flattened (3d -> 1d) array in x-z-y order.
-    /// (the x variable changes fastest, then z, then y)
+    /// It is stored as a flattened (3d -> 1d) array in x-z-y order,
+    /// (the x variable changes fastest, then z, then y).
     /// You can index a position with the formula:
+    ///
     /// `bedrock[x][z][y] = bedrock[(x) + (z * x_size) * (y * x_size * z_size)]`
+    ///
     /// It is written with the y layer last, because most of the time, one does not
     /// need more than one y layer. It is there nonetheless for those who need it.
     ///
