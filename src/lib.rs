@@ -6,7 +6,15 @@ pub trait BedrockGenerator {
 
     fn is_bedrock(&self, x: i32, y: i32, z: i32) -> bool;
 
-    fn generate_range(&self, x_min: i32, y_min: i32, z_min: i32, x_max: i32, y_max: i32, z_max: i32) -> Vec<bool> {
+    fn generate_range(
+        &self,
+        x_min: i32,
+        y_min: i32,
+        z_min: i32,
+        x_max: i32,
+        y_max: i32,
+        z_max: i32,
+    ) -> Vec<bool> {
         //default for BedrockGenerator
         //put some bedrock into a chunk of bool
 
