@@ -5,6 +5,26 @@ pub trait BedrockGenerator {
     fn new(seed: u64) -> Self;
 
     fn is_bedrock(&self, x: i32, y: i32, z: i32) -> bool;
+
+    fn generate_range(&self, x_min: i32, y_min: i32, z_min: i32, x_max: i32, y_max: i32, z_max: i32) -> Vec<bool> {
+        //default for BedrockGenerator
+        //put some bedrock into a chunk of bool
+
+        //first x, then z, then y for ordering within the vec.
+        //i want y to be the last because people tend to only need one layer
+
+        //bedrock[x][z][y] = bedrock[(x) + (z * x_size) * (y * x_size * z_size)]
+        let mut bedrock: Vec<bool> = Vec::new();
+
+        for y in y_min..=y_max {
+            for z in z_min..=z_max {
+                for x in x_min..=x_max {
+                    bedrock.push(self.is_bedrock(x, y, z));
+                }
+            }
+        }
+        bedrock
+    }
 }
 
 fn lerp(delta: f32, start: f32, end: f32) -> f32 {

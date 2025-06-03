@@ -3,15 +3,14 @@ use bedrockgen::nether::floor::NetherBedrock;
 
 fn main() {
     let bedrock_generator = NetherBedrock::new(0);
+    let scale: i64 = 10000;
 
-    for z in 0..16 {
-        for x in 0..16 {
-            match bedrock_generator.is_bedrock(x, 4, z) {
-                true => print!("# "),
-                false => print!("_ "),
-            }
+    let floor = bedrock_generator.generate_range(0, -60, 0, scale as i32, -60, scale as i32);
+
+    for z in 0..scale {
+        for x in 0..scale {
+
         }
-        println!();
     }
 }
 
