@@ -1,8 +1,8 @@
-mod xrng;
+pub mod xrng;
 use xrng::Xrng;
 
 pub struct OverworldBedrock {
-    xr: Xrng,
+    pub xr: Xrng,
 }
 
 impl crate::BedrockGenerator for OverworldBedrock {

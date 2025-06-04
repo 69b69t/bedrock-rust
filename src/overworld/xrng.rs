@@ -1,9 +1,9 @@
 //cant find a suitable xoroshiro implementation
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Xrng {
-    high: u64,
-    low: u64,
+    pub high: u64,
+    pub low: u64,
 }
 
 impl Xrng {
@@ -15,6 +15,17 @@ impl Xrng {
         let mut high = self.high;
         let low = self.low;
 
+        //since we are rotating 17 bits left, really only the
+        //seventeenth upper and beyond bits matter for modifying n after
+        //the rotl, and low's upper 0 and beyond matter.
+        //considering we are only using 24 bits of the upper state,
+        //only bits 17 - (17 + 24) of high matter.
+        //bits 0 to 24 and 17 to (17 + 24) of low matter.
+        //there are large spikes of influence at 0 and 17 bits on low
+        //and at 17 bits in on high.
+        //all of these values are counting from MSB to LSB
+
+        //really about 4 bits per each of these imfluence spikes matter to the state
         let n = rotl64(high.wrapping_add(low), 17).wrapping_add(low);
         high ^= low;
         self.high = rotl64(high, 28);

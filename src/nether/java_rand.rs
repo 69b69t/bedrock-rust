@@ -20,7 +20,7 @@ const F64_DIV: f64 = (1u64 << 53) as f64;
 #[derive(Debug, Clone)]
 pub struct Random {
     pub state: Wrapping<i64>,
-    next_gaussian: Option<f64>,
+    pub next_gaussian: Option<f64>,
 }
 
 impl Random {

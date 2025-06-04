@@ -2,7 +2,7 @@ use super::java_rand::Random;
 
 #[derive(Clone)]
 pub struct NetherBedrock {
-    state: Random,
+    pub state: Random,
 }
 
 //implement floor here to make it a little more seperate
