@@ -2,10 +2,11 @@ pub mod nether;
 pub mod overworld;
 
 pub trait BedrockGenerator {
-    /// Returns a type that implements BedrockGenerator
+    /// Returns a type that implements BedrockGenerator.
+    /// The argument that new() takes is the world seed.
     fn new(seed: u64) -> Self;
 
-    /// Returns a bool given an x y and z position
+    /// Returns a bool given an x y and z position and an immutable reference to self.
     fn is_bedrock(&self, x: i32, y: i32, z: i32) -> bool;
 
     /// Returns a `Vec<bool>` of bedrock.
@@ -50,12 +51,6 @@ pub trait BedrockGenerator {
         y_max: i32,
         z_max: i32,
     ) -> Vec<bool> {
-        //put some bedrock into a chunk of bool
-
-        //first x, then z, then y for ordering within the vec.
-        //i want y to be the last because people tend to only need one layer
-
-        //bedrock[x][z][y] = bedrock[(x) + (z * x_size) * (y * x_size * z_size)]
         let mut bedrock: Vec<bool> = Vec::new();
 
         for y in y_min..y_max {
