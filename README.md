@@ -8,4 +8,4 @@ You can use it the conventional way, either through cloning and adding as a depe
 ## Speed?
 I haven't really optimized for speed, as it is mainly for those who wish to use it for learning. It is still pretty fast, and everything is thread safe, so it is easily multithreadable. Though, if you're really going for speed, use CUDA.
 ## Meow?
-Meow.
+Meow!
