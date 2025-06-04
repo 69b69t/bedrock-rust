@@ -29,3 +29,29 @@ impl crate::BedrockGenerator for OverworldBedrock {
         xr.next_float() < density
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::BedrockGenerator;
+
+    #[test]
+    fn test_bedrock_generation() {
+        //make a new BedrockGenerator
+        let bedrock_generator = OverworldBedrock::new(0);
+
+        //this should be enough that even the most similar of bedrock patterns are not equal.
+        //a better way to do this would be to feed a hasher the boolean values
+        //and check the output, because right now we are only counting the number of bedrock,
+        //which is falliable
+        let bedrock_pattern = bedrock_generator.generate_range(0, -64, 0, 10000, -59, 10000);
+        let mut counter = 0;
+        for bedrock in bedrock_pattern {
+            if bedrock {
+                counter += 1;
+            }
+        }
+        println!("{counter} bedrock generated");
+        assert_eq!(counter, 300009082);
+    }
+}

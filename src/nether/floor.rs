@@ -28,3 +28,29 @@ impl crate::BedrockGenerator for NetherBedrock {
         temp_rng.next_f64() < (density as f64)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::BedrockGenerator;
+
+    #[test]
+    fn test_bedrock_generation() {
+        //make a new BedrockGenerator
+        let bedrock_generator = NetherBedrock::new(0);
+
+        //this should be enough that even the most similar of bedrock patterns are not equal.
+        //a better way to do this would be to feed a hasher the boolean values
+        //and check the output, because right now we are only counting the number of bedrock,
+        //which is falliable
+        let bedrock_pattern = bedrock_generator.generate_range(0, 0, 0, 10000, 5, 10000);
+        let mut counter = 0;
+        for bedrock in bedrock_pattern {
+            if bedrock {
+                counter += 1;
+            }
+        }
+        println!("{counter} bedrock generated");
+        assert_eq!(counter, 300016407);
+    }
+}

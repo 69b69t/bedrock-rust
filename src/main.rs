@@ -1,17 +1,17 @@
 use bedrockgen::BedrockGenerator;
-use bedrockgen::nether::floor::NetherBedrock;
+use bedrockgen::nether::roof::NetherBedrock;
 
 fn main() {
+    //make a new BedrockGenerator
     let bedrock_generator = NetherBedrock::new(0);
-    let scale: i64 = 10000;
-
-    let floor = bedrock_generator.generate_range(0, -64, 0, scale as i32, -60, scale as i32);
-
-    for z in 0..scale {
-        for x in 0..scale {
-
+    let bedrock_pattern = bedrock_generator.generate_range(0, 123, 0, 10000, 128, 10000);
+    let mut counter = 0;
+    for bedrock in bedrock_pattern {
+        if bedrock {
+            counter += 1;
         }
     }
+    println!("{counter} bedrock generated");
 }
 
 /*

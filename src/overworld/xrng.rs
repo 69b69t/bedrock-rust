@@ -57,11 +57,11 @@ impl Xrng {
     }
 }
 
-pub fn rotl64(x: u64, b: u8) -> u64 {
+fn rotl64(x: u64, b: u8) -> u64 {
     (x << b) | (x >> (64 - b))
 }
 
-pub fn split_mix_64_int(seed: u64) -> u64 {
+fn split_mix_64_int(seed: u64) -> u64 {
     let mut seed = (seed ^ (seed >> 30)).wrapping_mul(0xBF58476D1CE4E5B9);
     seed = (seed ^ (seed >> 27)).wrapping_mul(0x94D049BB133111EB);
     seed ^ (seed >> 31)

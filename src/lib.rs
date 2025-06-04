@@ -104,3 +104,27 @@ fn text_hash_code(text: &str) -> i32 {
     }
     hash
 }
+
+#[cfg(test)]
+mod tests {
+    //bring the stuff above into scope
+    use super::*;
+
+    #[test]
+    fn test_lerp_progress() {
+        let test_value = lerp_from_progress(143.0, 69.0, 420.0, 0.0, 1.0);
+        assert_eq!(test_value, 0.21082622);
+    }
+
+    #[test]
+    fn test_hash_code() {
+        let test_value = hash_code(34876, -146776, 327466);
+        assert_eq!(test_value, 3582309401473);
+    }
+
+    #[test]
+    fn test_text_hash_code() {
+        let test_value = text_hash_code("solarismars");
+        assert_eq!(test_value, 0);
+    }
+}
