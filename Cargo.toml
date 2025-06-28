@@ -4,3 +4,8 @@ version = "0.2.0"
 edition = "2024"
 
 [dependencies]
+
+[package]
+name = "bedrockgen"
+license = "MIT"
+description = "A library crate written in rust to emulate Minecraft's bedrock generation."
