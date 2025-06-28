@@ -1,8 +1,8 @@
-pub mod nether;
-pub mod overworld;
-
 //! # Bedrock Gen
 //! `bedrockgen` is a library crate for generating bedrock patterns from Minecraft.
+
+pub mod nether;
+pub mod overworld;
 
 pub trait BedrockGenerator {
     /// Returns a type that implements BedrockGenerator.
